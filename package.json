@@ -1,5 +1,5 @@
 {
-  "name": "nome-do-projeto",
+  "name": "mais-suade-form",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
