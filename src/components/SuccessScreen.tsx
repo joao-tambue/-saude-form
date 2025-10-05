@@ -1,11 +1,13 @@
 import React from 'react';
 import { CheckCircle, FileText } from 'lucide-react';
+import type { ReportFormData } from '../types/Report';
 
 interface SuccessScreenProps {
   onNewReport: () => void;
+  submittedData?: ReportFormData | null;
 }
 
-const SuccessScreen: React.FC<SuccessScreenProps> = ({ onNewReport }) => {
+const SuccessScreen: React.FC<SuccessScreenProps> = ({ onNewReport, submittedData }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
@@ -41,6 +43,15 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({ onNewReport }) => {
         >
           Fazer Nova Reportagem
         </button>
+
+        {submittedData && (
+          <div className="mt-6 text-left bg-gray-50 rounded-lg p-4 border border-gray-100">
+            <h2 className="font-semibold text-gray-800 mb-2">Resumo da Reportagem</h2>
+            <p className="text-sm text-gray-700"><span className="font-medium">Nome:</span> {submittedData.name}</p>
+            <p className="text-sm text-gray-700"><span className="font-medium">Local:</span> {submittedData.location}</p>
+            <p className="text-sm text-gray-700 mt-2"><span className="font-medium">Descrição:</span> {submittedData.description}</p>
+          </div>
+        )}
       </div>
     </div>
   );

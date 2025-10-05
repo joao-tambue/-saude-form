@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import InstructionScreen from './components/InstructionScreen';
 import ReportForm from './components/ReportForm';
 import SuccessScreen from './components/SuccessScreen';
