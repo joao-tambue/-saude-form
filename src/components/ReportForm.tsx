@@ -31,7 +31,7 @@ const ReportForm: React.FC<ReportFormProps> = ({ onSubmit, onBack }) => {
           const { latitude, longitude } = position.coords;
           handleChange('location', `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`);
         },
-        (error) => {
+        () => {
           alert('Não foi possível obter a localização atual. Por favor, insira manualmente.');
         }
       );

@@ -1,4 +1,3 @@
-// App.tsx
 import { useState } from 'react';
 import InstructionScreen from './components/InstructionScreen';
 import ReportForm from './components/ReportForm';
@@ -14,7 +13,6 @@ function App() {
   const handleFormSubmit = (data: ReportFormData) => {
     setSubmittedData(data);
     setCurrentScreen('success');
-    // Aqui você faria a chamada API para enviar os dados
     console.log('Dados enviados:', data);
   };
 
@@ -27,21 +25,27 @@ function App() {
     setCurrentScreen('instructions');
   };
 
+  // ensure submittedData is read to satisfy TypeScript "no unused locals" checks
+  void submittedData;
+
   return (
     <div className="App">
       {currentScreen === 'instructions' && (
         <InstructionScreen onContinue={() => setCurrentScreen('form')} />
       )}
-      
+
       {currentScreen === 'form' && (
         <ReportForm 
           onSubmit={handleFormSubmit}
           onBack={handleBackToInstructions}
         />
       )}
-      
+
       {currentScreen === 'success' && (
-        <SuccessScreen onNewReport={handleNewReport} />
+        <SuccessScreen 
+          onNewReport={handleNewReport} 
+          submittedData={submittedData}
+        />
       )}
     </div>
   );
